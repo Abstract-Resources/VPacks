@@ -1,0 +1,40 @@
+{
+  "name": "vezdehod/vpacks",
+  "description": "Description",
+  "minimum-stability": "dev",
+  "license": "Apache-2.0",
+
+  "require": {
+    "php": "^8.0",
+    "ext-yaml": "*",
+    "ext-pthreads": "*",
+    "ext-json": "*",
+    "ext-mysqli": "*",
+    "ext-curl": "*"
+  },
+
+  "require-dev": {
+    "phpstan/phpstan": "^1.2.0",
+    "phpstan/phpstan-strict-rules": "^1.1.0",
+    "pocketmine/pocketmine-mp": "4.6.6"
+  },
+
+  "repositories": [{"type": "vcs", "url":  "git@github.com:aabstractt/PocketMine-MP-1"}],
+
+  "autoload": {
+    "psr-4": {"": ["src"]}
+  },
+
+  "scripts": {
+    "analyze": "./vendor/bin/phpstan analyze --no-progress --memory-limit=2G",
+
+    "make-phar": [
+      "@php -dphar.readonly=0 make-phar.php --release"
+    ],
+
+    "make-phar-test": [
+      "@analyze",
+      "@php make-phar.php --out C:\\Users\\crank\\Documents\\Servers\\pmmp4.0\\plugins\\"
+    ]
+  }
+}
